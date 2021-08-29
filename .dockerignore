@@ -1,0 +1,7 @@
+.idea
+Dockerfile
+docker-compose.yml
+protos
+postgres-data
+postgres-data-dev
+postgres-data-test

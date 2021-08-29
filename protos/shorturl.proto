@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package main;
+
+option go_package = "src/grpcgen;grpcgen";
+
+message Url {
+  string url = 1;
+}
+
+message Key {
+  string key = 1;
+}
+
+service ShortUrl {
+  rpc Create (Url) returns (Key) {}
+  rpc Get (Key) returns (Url) {}
+}

@@ -1,0 +1,26 @@
+# docker-compose build
+# docker-compose run -p 127.0.0.1:8080:8080 -d server
+
+version: "3.9"
+
+services:
+  database:
+    image: postgres:13-alpine
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+      - POSTGRES_DB=shorturl
+    ports:
+      - "5432:5432"
+
+  server:
+    image: n3kto/shorturl:latest
+    depends_on:
+      - database
+    environment:
+      - HOST=:8080
+      - DB_URL=postgresql://postgres:qwerty@database:5432/shorturl
+    ports:
+      - "8080:8080"
