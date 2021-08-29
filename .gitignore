@@ -4,6 +4,7 @@
 *.so
 *.dylib
 *.test
+!Dockerfile.test
 *.out
 
 build

@@ -1,0 +1,6 @@
+FROM golang:1.16-alpine
+WORKDIR /go/src/shorturl
+COPY . .
+RUN go mod download
+ENV CGO_ENABLED=0
+ENTRYPOINT ["go", "test", "-v", "./src/./..."]
